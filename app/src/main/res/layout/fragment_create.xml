@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".CreateFragment">
+
+        <EditText
+            android:id="@+id/input_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginBottom="30dp"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:hint="Date"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:id="@+id/input_name_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginBottom="30dp"
+            android:hint="Item"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:id="@+id/input_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginBottom="30dp"
+            android:hint="Price"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:id="@+id/input_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginBottom="30dp"
+            android:hint="Quantity"
+            android:textColor="@color/white" />
+
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/white"
+            android:layout_marginStart="180dp"
+            android:layout_marginEnd="140dp"
+            android:layout_marginBottom="30dp"
+            android:text="save"
+            android:textColor="@color/white" />
+
+
+
+
+
+</LinearLayout>
