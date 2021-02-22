@@ -2,10 +2,12 @@ package com.example.shoppinglist
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.InputType
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_create.*
@@ -31,6 +33,26 @@ class CreateFragment : Fragment(),View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         button_save.setOnClickListener(this)
 
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        input_date.setInputType(InputType.TYPE_NULL)
+        input_date.setOnClickListener(View.OnClickListener {
+            val datePickerDialog = activity?.let { it1 ->
+                DatePickerDialog(
+                        it1, DatePickerDialog.OnDateSetListener
+                { view, year, monthOfYear, dayOfMonth ->
+                    input_date.setText(
+                            "$year/$monthOfYear/$dayOfMonth",
+                            TextView.BufferType.EDITABLE
+                    );
+                }, year, month, day
+                )
+            }
+            datePickerDialog?.show()
+        })
     }
 
     companion object {
