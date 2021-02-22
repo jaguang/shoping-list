@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_shoping"
+    app:startDestination="@id/createFragment2">
+    <fragment
+        android:id="@+id/createFragment2"
+        android:name="com.example.shoppinglist.CreateFragment"
+        android:label="fragment_create"
+        tools:layout="@layout/fragment_create" />
+    <fragment
+        android:id="@+id/accountFragment2"
+        android:name="com.example.shoppinglist.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/historyFragment2"
+        android:name="com.example.shoppinglist.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.shoppinglist.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" />
+    <action
+        android:id="@+id/action_global_accountFragment2"
+        app:destination="@id/accountFragment2" />
+    <action
+        android:id="@+id/action_global_createFragment2"
+        app:destination="@id/createFragment2" />
+    <action
+        android:id="@+id/action_global_listFragment"
+        app:destination="@id/listFragment" />
+    <action
+        android:id="@+id/action_global_historyFragment2"
+        app:destination="@id/historyFragment2" />
+</navigation>

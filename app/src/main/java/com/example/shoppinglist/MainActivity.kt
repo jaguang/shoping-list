@@ -3,46 +3,26 @@ package com.example.shoppinglist
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_create.*
 
-class MainActivity : AppCompatActivity(),ItemInterface {
-    private lateinit var createFragment: CreateFragment
-    private lateinit var listFragment: ListFragment
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val buttonAdd = findViewById<Button>(R.id.button_add)
+        buttonAdd.setOnClickListener{
+            findNavController(R.id.nav_host_fragment).navigate(R.id.action_global_createFragment2)
+        }
 
-        createFragment = CreateFragment.newInstance(this)
-        switchFragment(createFragment)
+        val buttonList = findViewById<Button>(R.id.button_list)
+        buttonList.setOnClickListener {
+            findNavController(R.id.nav_host_fragment_container).navigate(R.id.action_global_listFragment)
+        }
     }
 
-    private fun switchFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.slide_in,R.anim.slide_out)
-                .replace(R.id.fragment_container,fragment)
-                .commit()
-    }
-
-    fun onCickList(view:View) {
-        listFragment  = ListFragment()
-        switchFragment(listFragment)
-    }
-
-    fun onClickadd(view: View) {
-        switchFragment(createFragment)
-    }
-
-
-    override fun addItem(date: String, name: String, price: String, quantity: String) {
-        itemList.add(
-                Item(
-                        date,
-                        name,
-                        price,
-                        quantity
-                )
-        )
-    }
 }

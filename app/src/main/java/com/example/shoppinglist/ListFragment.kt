@@ -6,9 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_list.*
 
-class ListFragment() : Fragment() {
+class ListFragment: Fragment(),View.OnClickListener {
+
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,24 +25,23 @@ class ListFragment() : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_list, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val stringBuilder = StringBuilder()
-        for ((index,item) in itemList.withIndex()) {
-            stringBuilder.append("${index + 1}. Tanggal : ${item.date}, Item : ${item.name}, Price : ${item.price}, Quantity : ${item.quantity} \n")
-
-        }
-        stringBuilder.append(" \n ")
-        view_item.text = stringBuilder
-
+        navController =Navigation.findNavController(view)
+        button_back.setOnClickListener(this)
     }
 
 
     companion object {
        @JvmStatic
         fun newInstance() = ListFragment()
+    }
+
+    override fun onClick(p0: View?) {
+//        when(p0) {
+//            button_back -> navController.navigate(R.id.action_createFragment_to_listFragment)
+//        }
     }
 }

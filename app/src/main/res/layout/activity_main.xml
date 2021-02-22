@@ -7,41 +7,38 @@
     android:layout_gravity="center"
     tools:context=".MainActivity">
 
-
-    <FrameLayout
-        android:layout_marginTop="20dp"
-        android:id="@+id/fragment_container"
-        android:foregroundGravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.005">
-    </FrameLayout>
+        app:layout_constraintBottom_toBottomOf="@id/guideline2"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_shoping">
+
+    </androidx.fragment.app.FragmentContainerView>
 
     <LinearLayout
         android:id="@+id/linear"
-        android:layout_width="410dp"
-        android:layout_height="220dp"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
         <Button
             android:id="@+id/button_add"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_gravity="center_vertical|center_horizontal"
             android:background="@drawable/round_button"
             android:text="+"
-            android:onClick="onClickadd"
             android:textColor="#fff"
             android:textSize="30dp" />
 
@@ -49,11 +46,30 @@
             android:id="@+id/button_list"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:onClick="onCickList"
-            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginLeft="30dp"
             android:background="@drawable/round_button"
             android:text="L"
-            android:layout_marginLeft="100dp"
+            android:textColor="#fff"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/button_account"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/round_button"
+            android:text="A"
+            android:textColor="#fff"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/button_history"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/round_button"
+            android:text="H"
             android:textColor="#fff"
             android:textSize="30dp" />
     </LinearLayout>
@@ -63,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7"
-        app:layout_constraintGuide_begin="497dp" />
+        app:layout_constraintGuide_begin="579dp"
+        app:layout_constraintGuide_percent="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
