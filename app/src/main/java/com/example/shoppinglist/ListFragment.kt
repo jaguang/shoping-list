@@ -23,17 +23,17 @@ class ListFragment() : Fragment() {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val stringBuilder = StringBuilder()
-        for ((index,item) in itemList.withIndex()) {
-            stringBuilder.append("${index + 1}. Tanggal : ${item.date}, Item : ${item.name}, Price : ${item.price}, Quantity : ${item.quantity} \n")
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        val stringBuilder = StringBuilder()
+//        for ((index,item) in itemList.withIndex()) {
+//            stringBuilder.append("${index + 1}. Tanggal : ${item.date}, Item : ${item.name}, Price : ${item.price}, Quantity : ${item.quantity} \n")
+//
+//        }
+//        stringBuilder.append(" \n ")
+//        view_item.text = stringBuilder
 
-        }
-        stringBuilder.append(" \n ")
-        view_item.text = stringBuilder
-
-    }
+//    }
 
 
     companion object {

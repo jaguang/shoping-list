@@ -8,62 +8,30 @@
     tools:context=".MainActivity">
 
 
-    <FrameLayout
-        android:layout_marginTop="20dp"
-        android:id="@+id/fragment_container"
-        android:foregroundGravity="center"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="409dp"
+        android:layout_height="667dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:navGraph="@navigation/nav_shooping" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.005">
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/linear"
-        android:layout_width="410dp"
-        android:layout_height="220dp"
-        android:gravity="center"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="675dp"
+        android:foregroundGravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:layout_constraintVertical_bias="1.0">
+        app:menu="@menu/nav_menu"
+        tools:ignore="MissingConstraints" />
 
-        <Button
-            android:id="@+id/button_add"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:background="@drawable/round_button"
-            android:text="+"
-            android:onClick="onClickadd"
-            android:textColor="#fff"
-            android:textSize="30dp" />
-
-        <Button
-            android:id="@+id/button_list"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:onClick="onCickList"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:background="@drawable/round_button"
-            android:text="L"
-            android:layout_marginLeft="100dp"
-            android:textColor="#fff"
-            android:textSize="30dp" />
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7"
-        app:layout_constraintGuide_begin="497dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
