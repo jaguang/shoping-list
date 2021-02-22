@@ -32,17 +32,3 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-
-
-//    override fun addItem(date: String, name: String, price: String, quantity: String) {
-//        itemList.add(
-//                Item(
-//                        date,
-//                        name,
-//                        price,
-//                        quantity
-//                )
-//        )
-//    }
-//}

@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Add"
-        android:id="@+id/listFragment"
-        android:icon="@drawable/ic_baseline_format_list_bulleted_24"/>
-    <item android:title="List"
         android:id="@+id/createFragment"
         android:icon="@drawable/ic_baseline_add_circle_24"/>
+    <item android:title="List"
+        android:id="@+id/listFragment"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"/>
 </menu>

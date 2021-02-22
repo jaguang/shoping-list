@@ -1,5 +1,6 @@
 package com.example.shoppinglist
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,11 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_create.*
+import java.util.*
 
-class CreateFragment : Fragment() {
+class CreateFragment : Fragment(),View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
     }
 
@@ -26,7 +29,8 @@ class CreateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        button_save.setOnClickListener(this)
+        button_save.setOnClickListener(this)
+
     }
 
     companion object {
@@ -34,23 +38,22 @@ class CreateFragment : Fragment() {
         fun newInstance() = CreateFragment()
     }
 
-//    override fun onClick(v: View?) {
-//        val date = input_date.text.toString()
-//        val name = input_name_item.text.toString()
-//        val price = input_price.text.toString()
-//        val quantity = input_quantity.text.toString()
-//        when(v) {
-//            button_save -> {
-//                if (date == "" || name == "" || price == "" || quantity == "") {
-//                    Toast.makeText(activity, "cannot add data, please fill all form ", Toast.LENGTH_SHORT).show()
-//
-//                } else {
-//                    itemInterface.addItem(date, name, price, quantity)
-//                    Toast.makeText(activity, "Success add new item ", Toast.LENGTH_SHORT).show()
-//
-//
-//                }
-//            }
-//        }
-//    }
+
+    override fun onClick(v: View?) {
+        val date = input_date.text.toString()
+        val name = input_name_item.text.toString()
+        val price = input_price.text.toString()
+        val quantity = input_quantity.text.toString()
+        when(v) {
+
+            button_save -> {
+                if (date == "" || name == "" || price == "" || quantity == "") {
+                    Toast.makeText(activity, "cannot add data, please fill all form ", Toast.LENGTH_SHORT).show()
+                } else {
+                    addItem(date, name, price, quantity)
+                    Toast.makeText(activity, "Success add new item ", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
 }
