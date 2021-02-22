@@ -67,7 +67,6 @@ class CreateFragment : Fragment(),View.OnClickListener {
         val price = input_price.text.toString()
         val quantity = input_quantity.text.toString()
         when(v) {
-
             button_save -> {
                 if (date == "" || name == "" || price == "" || quantity == "") {
                     Toast.makeText(activity, "cannot add data, please fill all form ", Toast.LENGTH_SHORT).show()

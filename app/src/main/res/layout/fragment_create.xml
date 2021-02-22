@@ -9,6 +9,12 @@
     android:orientation="vertical"
     tools:context=".CreateFragment">
 
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                android:text="Create Item"
+                android:layout_marginRight="100dp"
+                android:layout_marginBottom="60dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
