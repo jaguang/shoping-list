@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_create.*
 import java.util.*
 
-class CreateFragment : Fragment(),View.OnClickListener {
+class CreateFragment : Fragment() {
     lateinit var mainModel: MainModel
     lateinit var binding: FragmentCreateBinding
 
@@ -27,16 +27,31 @@ class CreateFragment : Fragment(),View.OnClickListener {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create, container, false)
+        binding = FragmentCreateBinding.inflate(layoutInflater)
+        binding.apply {
+            buttonSave.setOnClickListener {
+                val date = inputDate.text.toString()
+                val name = inputNameItem.text.toString()
+                val price = inputPrice.text.toString()
+                val quantity = inputQuantity.text.toString()
+                if (date == "" || name == "" || price == "" || quantity == "") {
+                    Toast.makeText(activity, "cannot add data, please fill all form ", Toast.LENGTH_SHORT).show()
+                } else {
+                    mainModel.addItem(date, name, price, quantity)
+                    Toast.makeText(activity, "Success add new item ", Toast.LENGTH_SHORT).show()
+                }
+            }
+            return binding.root
+        }
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        button_save.setOnClickListener(this)
 
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -61,25 +76,8 @@ class CreateFragment : Fragment(),View.OnClickListener {
     }
 
     companion object {
-       @JvmStatic
+        @JvmStatic
         fun newInstance() = CreateFragment()
     }
-
-
-    override fun onClick(v: View?) {
-        val date = input_date.text.toString()
-        val name = input_name_item.text.toString()
-        val price = input_price.text.toString()
-        val quantity = input_quantity.text.toString()
-        when(v) {
-            button_save -> {
-                if (date == "" || name == "" || price == "" || quantity == "") {
-                    Toast.makeText(activity, "cannot add data, please fill all form ", Toast.LENGTH_SHORT).show()
-                } else {
-                    mainModel.addItem(date, name, price, quantity)
-                    Toast.makeText(activity, "Success add new item ", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
 }
+
