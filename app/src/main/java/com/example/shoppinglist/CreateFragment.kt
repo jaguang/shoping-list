@@ -9,15 +9,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.shoppinglist.databinding.FragmentCreateBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_create.*
 import java.util.*
 
 class CreateFragment : Fragment(),View.OnClickListener {
+    lateinit var mainModel: MainModel
+    lateinit var binding: FragmentCreateBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        mainModel = ViewModelProvider(requireActivity()).get(MainModel::class.java)
 
     }
 
@@ -71,7 +76,7 @@ class CreateFragment : Fragment(),View.OnClickListener {
                 if (date == "" || name == "" || price == "" || quantity == "") {
                     Toast.makeText(activity, "cannot add data, please fill all form ", Toast.LENGTH_SHORT).show()
                 } else {
-                    addItem(date, name, price, quantity)
+                    mainModel.addItem(date, name, price, quantity)
                     Toast.makeText(activity, "Success add new item ", Toast.LENGTH_SHORT).show()
                 }
             }
