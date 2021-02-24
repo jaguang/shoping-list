@@ -9,27 +9,33 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.example.shoppinglist.databinding.FragmentCreateBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_create.*
+import kotlinx.android.synthetic.main.loading_dialog.*
 import java.util.*
 
 class CreateFragment : Fragment() {
     lateinit var mainModel: MainModel
     lateinit var binding: FragmentCreateBinding
+    lateinit var loadingDialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainModel = ViewModelProvider(requireActivity()).get(MainModel::class.java)
-
+        subscribe()
     }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+
+        loadingDialog = LoadingDialog.build(requireContext())
         binding = FragmentCreateBinding.inflate(layoutInflater)
         binding.apply {
             buttonSave.setOnClickListener {
@@ -37,12 +43,8 @@ class CreateFragment : Fragment() {
                 val name = inputNameItem.text.toString()
                 val price = inputPrice.text.toString()
                 val quantity = inputQuantity.text.toString()
-                if (date == "" || name == "" || price == "" || quantity == "") {
-                    Toast.makeText(activity, "cannot add data, please fill all form ", Toast.LENGTH_SHORT).show()
-                } else {
-                    mainModel.addItem(date, name, price, quantity)
-                    Toast.makeText(activity, "Success add new item ", Toast.LENGTH_SHORT).show()
-                }
+                   mainModel.inputValidation(date, name, price, quantity)
+
             }
             return binding.root
         }
@@ -72,6 +74,30 @@ class CreateFragment : Fragment() {
                 )
             }
             datePickerDialog?.show()
+        })
+    }
+
+    private fun subscribe() {
+        mainModel.isValid.observe(requireActivity(), {
+            when (it.status) {
+                ResourceStatus.LOADING -> loadingDialog.show()
+                ResourceStatus.SUCCESS -> {
+                    loadingDialog.hide()
+                    Toast.makeText(
+                            requireContext(),
+                            it.message,
+                            Toast.LENGTH_LONG
+                    ).show()
+                }
+                ResourceStatus.FAIL -> {
+                    loadingDialog.hide()
+                    Toast.makeText(
+                        requireContext(),
+                        it.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
         })
     }
 

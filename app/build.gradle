@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-
+    def glide_version = "4.9.0"
     implementation "androidx.fragment:fragment-ktx:1.2.5"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0"
