@@ -8,22 +8,66 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainModel:ViewModel() {
+//        val itemLiveData: MutableLiveData<MutableList<Item>> = MutableLiveData(itemList)
+
+        var getShopingListLiveData : MutableLiveData<String> = MutableLiveData()
         var itemList = mutableListOf<Item>(
                 Item("january 4,2021","Tusuk Gigi","500","10")
         )
 
+        var name = arrayListOf("Tahu Sumedang","Combro","Martabak")
 
-//        val itemLiveData: MutableLiveData<Re<Item>> = MutableLiveData<ResourceState>(itemList)
+
         var _isvalid = MutableLiveData<ResourceState>()
         val isValid : LiveData<ResourceState>
-        get() {
-                return _isvalid
-        }
+                get() {
+                        return _isvalid
+                }
+//        private var _nameList = MutableLiveData<ResourceState>()
+//        val nameList : LiveData<ResourceState>
+//                get() {
+//                        return _nameList
+//                }
+
+//        fun onDateGetName(date: String) {
+//                GlobalScope.launch {
+//                _nameList.postValue(ResourceState.loading())
+//                        delay(3000)
+//                if( date == "1/1/2021") {
+//                        _nameList.postValue(
+//                                ResourceState.success(
+//                                        arrayListOf(),"succes"
+//
+//                                )
+//                        )
+//                } else {
+//                        _nameList.postValue(
+//                                ResourceState.success(
+//                                        arrayListOf("PHd","MCD","Tahu Goreng"),"success"
+//                                )
+//                        )
+//                }
+//                }
+//        }
+
+
+
+
         fun addItem(date: String,name:String,price:String,quantity:String) {
                 itemList.add(
                         Item(date,name,price,quantity)
                 )
-//                musicLiveData.value = itemList
+//                itemLiveData.value = itemList
+        }
+
+
+        fun getShopingList() {
+                val stringBuilder = StringBuilder()
+                for ((index, item) in itemList.withIndex()) {
+                        stringBuilder.append("${index + 1}. Tanggal : ${item.date}, Item : ${item.name}, Price : ${item.price}, Quantity : ${item.quantity} \n")
+
+                }
+                getShopingListLiveData.value = stringBuilder.append(" \n ").toString()
         }
 
         fun inputValidation(date: String,name: String,price: String,quantity: String) {

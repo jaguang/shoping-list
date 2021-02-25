@@ -42,15 +42,25 @@
             android:layout_marginStart="100dp"
             android:layout_marginEnd="100dp"
             android:layout_marginBottom="10dp"
-            android:hint="Item"
-            app:boxStrokeColor="@color/blue">
+            android:hint="Item">
 
-                <com.google.android.material.textfield.TextInputEditText
-
+                <TextView
                     android:id="@+id/input_name_item"
-                    android:layout_width="match_parent"
+                    android:inputType="text"
+                    android:text="tess"
+                    android:textSize="25dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:id="@+id/name_item"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:gravity="top"
+                    android:layout_marginStart="150dp" />
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
